@@ -45,9 +45,10 @@ var Todo = React.createClass({
   render: function () {
     return (
       <div className='todo-app'>
-        <button type='button' onClick={this.archiveItems}>Archive Done</button>
+        <h1>Todo App Made In ReactJS</h1>
         <InputBar inputValue={this.state.inputValue} inputOnChange={this.inputOnChange} addItem={this.addItem}/>
         <ItemsList items={this.state.items} toggle={this.toggleTodoState} delete={this.deleteItem}/>
+        <button type='button' className='btn-archive' onClick={this.archiveItems}><span className="glyphicon glyphicon-inbox"></span>Archive Done</button>
       </div>
     )
   }
@@ -59,7 +60,7 @@ var InputBar = React.createClass({
     return (
       <div className='input-bar'>
         <input type='text' placeholder='New item' value={this.props.inputValue} onChange={this.props.inputOnChange}></input>
-        <button type='button' className='btn-add' onClick={this.props.addItem}>Add</button>
+        <button type='button' className='btn-add' onClick={this.props.addItem}><span className="glyphicon glyphicon-pencil"></span></button>
       </div>
     )
   }
@@ -91,11 +92,9 @@ var Item = React.createClass({
   render: function () {
     return (
       <li className={this.props.data.done ? 'item done' : 'item'}>
-        <label>
-          <input type='checkbox' checked={this.props.data.done} onChange={() => this.props.toggle(this.props['data-index'])}></input>
-          {this.props.data.value}
-        </label>
-        <button type='button' onClick={() => this.props.delete(this.props['data-index'])}>Delete</button>
+        <input type='checkbox' id={'checkbox-' + this.props['data-index']} checked={this.props.data.done} onChange={() => this.props.toggle(this.props['data-index'])}></input><label htmlFor={'checkbox-' + this.props['data-index']}><span className="glyphicon glyphicon-ok"></span></label>
+        <span>{this.props.data.value}</span>
+        <button type='button' onClick={() => this.props.delete(this.props['data-index'])}><span className="glyphicon glyphicon-trash"></span></button>
       </li>
     )
   }
