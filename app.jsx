@@ -26,7 +26,6 @@ var Todo = React.createClass({
   },
 
   toggleTodoState: function (index) {
-    console.log(index);
     var updatedItems = this.state.items;
     updatedItems[index].done = !updatedItems[index].done;
     this.setState({ items: updatedItems });
@@ -48,7 +47,7 @@ var Todo = React.createClass({
         <h1>Todo App Made In ReactJS</h1>
         <InputBar inputValue={this.state.inputValue} inputOnChange={this.inputOnChange} addItem={this.addItem}/>
         <ItemsList items={this.state.items} toggle={this.toggleTodoState} delete={this.deleteItem}/>
-        <button type='button' className='btn-archive' onClick={this.archiveItems}><span className="glyphicon glyphicon-inbox"></span>Archive Done</button>
+        <button type='button' className='btn-archive' onClick={this.archiveItems}><i className="fa fa-archive fa-lg"></i>Archive Done</button>
       </div>
     )
   }
@@ -60,7 +59,7 @@ var InputBar = React.createClass({
     return (
       <div className='input-bar'>
         <input type='text' placeholder='New item' value={this.props.inputValue} onChange={this.props.inputOnChange}></input>
-        <button type='button' className='btn-add' onClick={this.props.addItem}><span className="glyphicon glyphicon-pencil"></span></button>
+        <button type='button' className='btn-add' onClick={this.props.addItem}><span className="fa fa-pencil fa-lg"></span></button>
       </div>
     )
   }
@@ -92,9 +91,9 @@ var Item = React.createClass({
   render: function () {
     return (
       <li className={this.props.data.done ? 'item done' : 'item'}>
-        <input type='checkbox' id={'checkbox-' + this.props['data-index']} checked={this.props.data.done} onChange={() => this.props.toggle(this.props['data-index'])}></input><label htmlFor={'checkbox-' + this.props['data-index']}><span className="glyphicon glyphicon-ok"></span></label>
+        <input type='checkbox' id={'checkbox-' + this.props['data-index']} checked={this.props.data.done} onChange={() => this.props.toggle(this.props['data-index'])}></input><label htmlFor={'checkbox-' + this.props['data-index']}><i className="fa fa-check fa-lg"></i></label>
         <span>{this.props.data.value}</span>
-        <button type='button' onClick={() => this.props.delete(this.props['data-index'])}><span className="glyphicon glyphicon-trash"></span></button>
+        <button type='button' onClick={() => this.props.delete(this.props['data-index'])}><i className="fa fa-trash fa-lg"></i></button>
       </li>
     )
   }

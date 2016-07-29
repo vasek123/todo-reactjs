@@ -4,9 +4,10 @@ body {
   top: 0;
   left: 0;
   margin: 0;
+  margin-bottom: 80px;
   background-color: #eaeaea;
-  width: 100vw;
-  height: 100vh;
+  min-height: calc(100vh - 80px);
+  width: 100%;
   font-family: 'Open Sans', sans-serif;
 }
 
@@ -185,6 +186,6 @@ span.author > span {
   box-shadow: 0px 0px 6px 0px rgba(0,0,0,0.04);
 }
 
-.btn-archive > span {
+.btn-archive > i {
   margin-right: 12px;
 }
